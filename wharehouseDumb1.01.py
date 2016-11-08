@@ -17,13 +17,13 @@ def Right(event):
 def Up(event):
     print ("Up button pressed")
     x1,y1,x2,y2=canvas.coords(id1)
-    if ((x2>=0 and x2<=125) or (x2>=325 and x2<=425) or (x2>=625 and x2<=725) or (x2>=925 and x2<=1025) or (x2>=1225 and x2<=1350)  or y1<125 or y2>385)and(x2>0 and x1<1350 and y2>0 and y1<500):
+    if ((x2>=0 and x2<=125) or (x2>=325 and x2<=425) or (x2>=625 and x2<=725) or (x2>=925 and x2<=1025) or (x2>=1225 and x2<=1350)  or y1<125 or y1>375)and(x2>0 and x1<1350 and y2>0 and y1<500):
         canvas.coords(id1,x1,y1-10,x2,y2-10)
     
 def Down(event):
     print ("Down button pressed")
     x1,y1,x2,y2=canvas.coords(id1)
-    if ((x2>=0 and x2<=125) or (x2>=325 and x2<=425) or (x2>=625 and x2<=725) or (x2>=925 and x2<=1025) or (x2>=1225 and x2<=1350)  or y1<125 or y2>385)and(x2>0 and x1<1350 and y2>0 and y1<500):
+    if ((x2>=0 and x2<=125) or (x2>=325 and x2<=425) or (x2>=625 and x2<=725) or (x2>=925 and x2<=1025) or (x2>=1225 and x2<=1350)  or y2<125 or y2>375)and(x2>0 and x1<1350 and y2>0 and y1<500):
         canvas.coords(id1,x1,y1+10,x2,y2+10)
     
 canvas = Canvas(window, width=1350, height=720, bg='white')

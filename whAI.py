@@ -7,7 +7,7 @@ window = Tk()
 # Create's the wharehouse window
 canvas = Canvas(window, width=1350, height=720, bg='white')
 #Creates controls frame
-canvasframe = Canvas(window,width=1136, height=200, bg='red')
+canvasframe = Canvas(window,width=1388, height=200, bg='red')
 ####################################################################################
 ### Control of the sreen state(fullsreen/windowed) #################################
 # Current screen state
@@ -25,7 +25,7 @@ def Escape(event):
 # Defines window geometry
 canvas.grid(columnspan=200,rowspan=12,padx=285,pady=10)
 # Defines controls frames geometry
-canvasframe.grid(padx=385)
+canvasframe.grid()
 # Binds Escape key to Escapes function
 canvas.bind('<Escape>',Escape)
 # Retrieves information from keyboard
@@ -95,9 +95,12 @@ def reset():
 ####################################################################################
 ### Defines New Objective ##########################################################
 def questcall():
-    for id in canvas.find_overlapping(1280, 595, 1290, 605):
+    for id in canvas.find_overlapping(1280, 595, 1320, 605):
         robotcolor = canvas.itemcget(id, 'fill')
         if robotcolor == 'yellow':
+            randcolor = random()
+            canvas.itemconfig(light, fill=randcolor)
+        elif robotcolor=='gold':
             randcolor = random()
             canvas.itemconfig(light, fill=randcolor)
 ####################################################################################
@@ -109,6 +112,13 @@ def random():
     random.choice(color) # Returns a random color from color list
     return random.choice(color)                                                         
 ####################################################################################
+def startrobot2():
+    for i in range(20):
+        for x in range(50):
+            x1,y1,x2,y2=canvas.coords(robot2)
+            canvas.coords(robot2,x1-vx,y1,x2-vx,y2)
+            canvas.update()           
+
 ####################################################################################
 ####################################################################################
 ### Sends Robot to the objective when called #######################################
@@ -451,6 +461,350 @@ def beginquest():
                     for x in range(50):
                         x1,y1,x2,y2=canvas.coords(robot)
                         canvas.coords(robot,x1-vx,y1,x2-vx,y2)
+                        canvas.update()
+                count() # Call count() function
+            # Makes call Box white when movent ends
+            canvas.itemconfig(light, fill='white')
+
+def beginquest2():
+    # Identifies Objective Color
+    for id in canvas.find_overlapping(1230, 700, 1330, 620):
+        callcolor = canvas.itemcget(id, 'fill')
+    # Detection of the Robot presence at the starting position
+    for id in canvas.find_overlapping(1280, 595, 1290, 605):
+        robotcolor = canvas.itemcget(id, 'fill')
+        # Allows fucntion call if the robot is at the starting position
+        if robotcolor == 'gold':
+            if callcolor=='blue': # Moves towards Blue Box
+                for i in range(543):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1,y1-vy,x2,y2-vy)
+                        canvas.update()
+                for i in range(1223):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1-vx,y1,x2-vx,y2)
+                        canvas.update()
+                for i in range(135):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1,y1+vy,x2,y2+vy)
+                        canvas.update()
+                for i in range(63):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1+vx,y1,x2+vx,y2)
+                        canvas.update()
+                count() # Call count() function
+            elif callcolor == 'darkblue': # Moves towards Dark Blue Box
+                for i in range(163):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1,y1-vy,x2,y2-vy)
+                        canvas.update()
+                for i in range(1223):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1-vx,y1,x2-vx,y2)
+                        canvas.update()
+                for i in range(135):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1,y1-vy,x2,y2-vy)
+                        canvas.update()
+                for i in range(63):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1+vx,y1,x2+vx,y2)
+                        canvas.update()
+                count() # Call count() function
+            elif callcolor == 'lightblue': # Moves towards Light Blue Box
+                for i in range(543):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1,y1-vy,x2,y2-vy)
+                        canvas.update()
+                for i in range(903):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1-vx,y1,x2-vx,y2)
+                        canvas.update()
+                for i in range(135):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1,y1+vy,x2,y2+vy)
+                        canvas.update()
+                for i in range(53):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1-vx,y1,x2-vx,y2)
+                        canvas.update()
+                count() # Call count() function
+            elif callcolor == 'grey': # Moves towards Grey Box
+                for i in range(163):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1,y1-vy,x2,y2-vy)
+                        canvas.update()
+                for i in range(903):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1-vx,y1,x2-vx,y2)
+                        canvas.update()
+                for i in range(135):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1,y1-vy,x2,y2-vy)
+                        canvas.update()
+                for i in range(53):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1-vx,y1,x2-vx,y2)
+                        canvas.update()
+                count() # Call count() function
+            elif callcolor == 'violet': # Moves towards Violet Box
+                for i in range(543):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1,y1-vy,x2,y2-vy)
+                        canvas.update()
+                for i in range(923):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1-vx,y1,x2-vx,y2)
+                        canvas.update()
+                for i in range(135):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1,y1+vy,x2,y2+vy)
+                        canvas.update()
+                for i in range(63):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1+vx,y1,x2+vx,y2)
+                        canvas.update()
+                count() # Call count() function
+            elif callcolor == 'darkorange': # Moves towards Dark Orange Box
+                for i in range(163):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1,y1-vy,x2,y2-vy)
+                        canvas.update()
+                for i in range(923):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1-vx,y1,x2-vx,y2)
+                        canvas.update()
+                for i in range(135):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1,y1-vy,x2,y2-vy)
+                        canvas.update()
+                for i in range(63):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1+vx,y1,x2+vx,y2)
+                        canvas.update()
+                count() # Call count() function    
+            elif callcolor == 'orange': # Moves towards Orange Box
+                for i in range(543):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1,y1-vy,x2,y2-vy)
+                        canvas.update()
+                for i in range(608):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1-vx,y1,x2-vx,y2)
+                        canvas.update()
+                for i in range(135):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1,y1+vy,x2,y2+vy)
+                        canvas.update()
+                for i in range(53):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1-vx,y1,x2-vx,y2)
+                        canvas.update()
+                count() # Call count() function
+            elif callcolor == 'salmon': # Moves towards Salmon Box
+                for i in range(163):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1,y1-vy,x2,y2-vy)
+                        canvas.update()
+                for i in range(608):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1-vx,y1,x2-vx,y2)
+                        canvas.update()
+                for i in range(135):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1,y1-vy,x2,y2-vy)
+                        canvas.update()
+                for i in range(53):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1-vx,y1,x2-vx,y2)
+                        canvas.update()
+                count() # Call count() function
+            elif callcolor == 'pink': # Moves towards Pink Box
+                for i in range(543):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1,y1-vy,x2,y2-vy)
+                        canvas.update()
+                for i in range(623):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1-vx,y1,x2-vx,y2)
+                        canvas.update()
+                for i in range(135):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1,y1+vy,x2,y2+vy)
+                        canvas.update()
+                for i in range(63):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1+vx,y1,x2+vx,y2)
+                        canvas.update()
+                count() # Call count() function
+            elif callcolor == 'purple': # Moves towards Purple Box
+                for i in range(163):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1,y1-vy,x2,y2-vy)
+                        canvas.update()
+                for i in range(623):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1-vx,y1,x2-vx,y2)
+                        canvas.update()
+                for i in range(135):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1,y1-vy,x2,y2-vy)
+                        canvas.update()
+                for i in range(63):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1+vx,y1,x2+vx,y2)
+                        canvas.update()
+                count() # Call count() function
+            elif callcolor == 'red': # Moves towards Red Box
+                for i in range(543):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1,y1-vy,x2,y2-vy)
+                        canvas.update()
+                for i in range(303):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1-vx,y1,x2-vx,y2)
+                        canvas.update()
+                for i in range(135):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1,y1+vy,x2,y2+vy)
+                        canvas.update()
+                for i in range(53):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1-vx,y1,x2-vx,y2)
+                        canvas.update()
+                count() # Call count() function
+            elif callcolor == 'silver': # Moves towards Silver Box
+                for i in range(163):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1,y1-vy,x2,y2-vy)
+                        canvas.update()
+                for i in range(303):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1-vx,y1,x2-vx,y2)
+                        canvas.update()
+                for i in range(135):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1,y1-vy,x2,y2-vy)
+                        canvas.update()
+                for i in range(53):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1-vx,y1,x2-vx,y2)
+                        canvas.update()
+                count() # Call count() function
+            elif callcolor == 'green': # Moves towards Green Box
+                for i in range(543):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1,y1-vy,x2,y2-vy)
+                        canvas.update()
+                for i in range(323):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1-vx,y1,x2-vx,y2)
+                        canvas.update()
+                for i in range(135):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1,y1+vy,x2,y2+vy)
+                        canvas.update()
+                for i in range(63):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1+vx,y1,x2+vx,y2)
+                        canvas.update()
+                count() # Call count() function
+            elif callcolor == 'lightgreen': # Moves towards Light Green Box
+                for i in range(163):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1,y1-vy,x2,y2-vy)
+                        canvas.update()
+                for i in range(323):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1-vx,y1,x2-vx,y2)
+                        canvas.update()
+                for i in range(135):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1,y1-vy,x2,y2-vy)
+                        canvas.update()
+                for i in range(63):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1+vx,y1,x2+vx,y2)
+                        canvas.update()
+                count() # Call count() function
+            elif callcolor == 'darkgreen': # Moves towards Dark Green Box
+                for i in range(410):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1,y1-vy,x2,y2-vy)
+                        canvas.update()
+                for i in range(53):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1-vx,y1,x2-vx,y2)
+                        canvas.update()
+                count() # Call count() function
+            elif callcolor == 'brown': # Moves towards Brown Box
+                for i in range(273):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1,y1-vy,x2,y2-vy)
+                        canvas.update()
+                for i in range(53):
+                    for x in range(50):
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1-vx,y1,x2-vx,y2)
                         canvas.update()
                 count() # Call count() function
             # Makes call Box white when movent ends
@@ -807,6 +1161,345 @@ def returN():
                 canvas.coords(robot,x1,y1+vy,x2,y2+vy)
                 canvas.update()
 ####################################################################################
+def returN2():
+    # Identification of the robot current position
+    x1,y1,x2,y2=canvas.coords(robot2)
+    # Identification of the current objective color
+    for id in canvas.find_overlapping(x1-5,y1-5,x2-5,y2-5):
+        callcolor = canvas.itemcget(id, 'fill')
+    if callcolor=='blue': # Returns from Blue Box
+        for i in range(63):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1-vx,y1,x2-vx,y2)
+                canvas.update()
+        for i in range(135):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1,y1-vy,x2,y2-vy)
+                canvas.update()
+        for i in range(1223):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1+vx,y1,x2+vx,y2)
+                canvas.update()
+        for i in range(543):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1,y1+vy,x2,y2+vy)
+                canvas.update()
+
+    elif callcolor == 'darkblue': # Returns from Dark Blue Box
+        for i in range(63):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1-vx,y1,x2-vx,y2)
+                canvas.update()
+        for i in range(135):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1,y1+vy,x2,y2+vy)
+                canvas.update()
+        for i in range(1223):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1+vx,y1,x2+vx,y2)
+                canvas.update()
+        for i in range(163):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1,y1+vy,x2,y2+vy)
+                canvas.update()
+
+    elif callcolor == 'lightblue': # Returns from Light Blue Box
+        for i in range(53):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1+vx,y1,x2+vx,y2)
+                canvas.update()
+        for i in range(135):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1,y1-vy,x2,y2-vy)
+                canvas.update()        
+        for i in range(903):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1+vx,y1,x2+vx,y2)
+                canvas.update()        
+        for i in range(543):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1,y1+vy,x2,y2+vy)
+                canvas.update()
+        
+
+    elif callcolor == 'grey': # Returns from Grey Box
+        for i in range(53):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1+vx,y1,x2+vx,y2)
+                canvas.update()
+        for i in range(135):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1,y1+vy,x2,y2+vy)
+                canvas.update()
+        for i in range(903):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1+vx,y1,x2+vx,y2)
+                canvas.update()
+        for i in range(163):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1,y1+vy,x2,y2+vy)
+                canvas.update()
+        
+
+    elif callcolor == 'violet': # Returns from Violet Box
+        for i in range(63):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1-vx,y1,x2-vx,y2)
+                canvas.update()
+        for i in range(135):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1,y1-vy,x2,y2-vy)
+                canvas.update()
+        for i in range(923):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1+vx,y1,x2+vx,y2)
+                canvas.update()
+        for i in range(543):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1,y1+vy,x2,y2+vy)
+                canvas.update()
+
+    elif callcolor == 'darkorange': # Returns from Dark Orange Box
+        for i in range(63):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1-vx,y1,x2-vx,y2)
+                canvas.update()
+        for i in range(135):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1,y1+vy,x2,y2+vy)
+                canvas.update()
+        for i in range(923):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1+vx,y1,x2+vx,y2)
+                canvas.update()
+        for i in range(163):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1,y1+vy,x2,y2+vy)
+                canvas.update()
+                
+    elif callcolor == 'orange': # Returns from Orange Box
+        for i in range(53):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1+vx,y1,x2+vx,y2)
+                canvas.update()
+        for i in range(135):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1,y1-vy,x2,y2-vy)
+                canvas.update()
+        for i in range(608):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1+vx,y1,x2+vx,y2)
+                canvas.update()
+        for i in range(543):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1,y1+vy,x2,y2+vy)
+                canvas.update()
+
+    elif callcolor == 'salmon': # Returns from Salmon Box
+        for i in range(53):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1+vx,y1,x2+vx,y2)
+                canvas.update()
+        for i in range(135):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1,y1+vy,x2,y2+vy)
+                canvas.update()
+        for i in range(608):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1+vx,y1,x2+vx,y2)
+                canvas.update()
+        for i in range(163):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1,y1+vy,x2,y2+vy)
+                canvas.update()
+
+    elif callcolor == 'pink': # Returns from Pink Box
+        for i in range(63):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1-vx,y1,x2-vx,y2)
+                canvas.update()
+        for i in range(135):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1,y1-vy,x2,y2-vy)
+                canvas.update()
+        for i in range(623):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1+vx,y1,x2+vx,y2)
+                canvas.update()
+        for i in range(543):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1,y1+vy,x2,y2+vy)
+                canvas.update()
+
+    elif callcolor == 'purple': # Returns from Purple Box
+        for i in range(63):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1-vx,y1,x2-vx,y2)
+                canvas.update()
+        for i in range(135):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1,y1+vy,x2,y2+vy)
+                canvas.update()
+        for i in range(623):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1+vx,y1,x2+vx,y2)
+                canvas.update()
+        for i in range(163):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1,y1+vy,x2,y2+vy)
+                canvas.update()
+
+    elif callcolor == 'red': # Returns from Red Box
+        for i in range(53):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1+vx,y1,x2+vx,y2)
+                canvas.update()
+        for i in range(135):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1,y1-vy,x2,y2-vy)
+                canvas.update()
+        for i in range(303):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1+vx,y1,x2+vx,y2)
+                canvas.update()
+        for i in range(543):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1,y1+vy,x2,y2+vy)
+                canvas.update()
+
+    elif callcolor == 'silver': # Returns from Silver Box
+        for i in range(53):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1+vx,y1,x2+vx,y2)
+                canvas.update()
+        for i in range(135):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1,y1+vy,x2,y2+vy)
+                canvas.update()
+        for i in range(303):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1+vx,y1,x2+vx,y2)
+                canvas.update()
+        for i in range(163):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1,y1+vy,x2,y2+vy)
+                canvas.update()
+
+    elif callcolor == 'green': # Returns from Green Box
+        for i in range(63):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1-vx,y1,x2-vx,y2)
+                canvas.update()
+        for i in range(135):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1,y1-vy,x2,y2-vy)
+                canvas.update()
+        for i in range(323):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1+vx,y1,x2+vx,y2)
+                canvas.update()
+        for i in range(543):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1,y1+vy,x2,y2+vy)
+                canvas.update()
+
+    elif callcolor == 'lightgreen': # Returns from Light Green Box
+        for i in range(63):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1-vx,y1,x2-vx,y2)
+                canvas.update()
+        for i in range(135):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1,y1+vy,x2,y2+vy)
+                canvas.update()
+        for i in range(323):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1+vx,y1,x2+vx,y2)
+                canvas.update()
+        for i in range(163):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1,y1+vy,x2,y2+vy)
+                canvas.update()
+
+    elif callcolor == 'darkgreen': # Returns from Dark Green Box
+        for i in range(53):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1+vx,y1,x2+vx,y2)
+                canvas.update()
+        for i in range(410):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1,y1+vy,x2,y2+vy)
+                canvas.update()
+
+    elif callcolor == 'brown': # Returns from Brown Box
+        for i in range(53):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1+vx,y1,x2+vx,y2)
+                canvas.update()
+        for i in range(273):
+            for x in range(50):
+                x1,y1,x2,y2=canvas.coords(robot2)
+                canvas.coords(robot2,x1,y1+vy,x2,y2+vy)
+                canvas.update()
 ####################################################################################
 ####################################################################################
 # List of possible box colors
@@ -815,6 +1508,7 @@ color = ('blue','darkblue','lightblue','grey','violet','darkorange','orange',
          'brown')
 # Robot Box
 robot=canvas.create_rectangle(1275,590,1295, 610, width=2, fill='yellow')
+robot2=canvas.create_rectangle(1300,590,1320, 610, width=2, fill='gold')
 # Objective Boxes
 canvas.create_rectangle(125 , 125,  225, 250, fill=color[0]) # Blue Box
 canvas.create_rectangle(125 , 250,  225, 375, fill=color[1]) # Dark Blue Box
@@ -894,6 +1588,11 @@ buttonRst=Button(canvasframe,text='Shutdown',command=window.destroy,bg='lightblu
                height=9, width=17)
 buttonRst.place(x=950,y=10)
 buttonRst['font'] = font1
+# New Button
+buttonRst_T=Button(canvasframe,text='LOL',command=startrobot2,bg='lightblue',
+               height=9, width=17)
+buttonRst_T.place(x=1138,y=10)
+buttonRst_T['font'] = font1
 ####################################################################################
 ### Automatic/Manual Toggle Button #################################################
 state=[0] # Toggle button current state list                                              
@@ -908,12 +1607,15 @@ def toggle(): # Funtion that defines toggle button
                 state[0]=1                                                               
     else:                                                                       
         togbtn.config(text='Manual')                                                                
-        state[0]=0                                                                 
-                                                                                   
-    while state[0]==1:                                                             
+        state[0]=0                               
+    startrobot2()                                                                               
+    while state[0]==1:
         questcall()                                                             
-        beginquest()                                                                
-        returN()                                                                   
+        beginquest()
+        questcall()
+        beginquest2()
+        returN()
+        returN2()                                                                   
                                                                                                                                 
 togbtn = Button(canvasframe,text="Manual", command=toggle, bg='lightblue',              
                height=9, width=17)                                                                

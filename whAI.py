@@ -1,3 +1,20 @@
+from tkinter import *
+window=Tk()
+frame = Canvas(window,width = 1280 , height = 720)
+frame.grid()
+
+font0 = font.Font(size=25, weight='bold') # Creates font0
+label0 = Label(frame, fg="green") # Creates label0
+# label0 configuration
+label0.config(text='Instructions:\n In this game you have two rob ',font=font0)
+label0.place(x=10,y=50) # label0 placement on window
+
+buttonOk=Button(frame,text='Start',command=window.destroy,bg='lightblue',
+               height=9, width=17)
+buttonOk.place(x=640,y=360)
+
+window.mainloop()
+
 # Import's tkinter library to create GUI 
 from tkinter import *
 # Import random library
@@ -7,7 +24,7 @@ window = Tk()
 # Create's the wharehouse window
 canvas = Canvas(window, width=1350, height=720, bg='white')
 #Creates controls frame
-canvasframe = Canvas(window,width=1388, height=200, bg='red')
+canvasframe = Canvas(window,width=1325, height=200, bg='red')
 ####################################################################################
 ### Control of the sreen state(fullsreen/windowed) #################################
 # Current screen state
@@ -25,7 +42,7 @@ def Escape(event):
 # Defines window geometry
 canvas.grid(columnspan=200,rowspan=12,padx=285,pady=10)
 # Defines controls frames geometry
-canvasframe.grid()
+canvasframe.grid(padx=300)
 # Binds Escape key to Escapes function
 canvas.bind('<Escape>',Escape)
 # Retrieves information from keyboard
@@ -41,7 +58,9 @@ label0 = Label(window, fg="green") # Creates label0
 # label0 configuration
 label0.config(text='Time Working: '+ str(second)+' seconds',font=font0)
 label0.grid(row=9,rowspan=3) # label0 placement on window
+
 # Time function
+
 def time():
     def timecount():
         global second # Imports second value into the function
@@ -1589,7 +1608,7 @@ buttonRst=Button(canvasframe,text='Shutdown',command=window.destroy,bg='lightblu
 buttonRst.place(x=950,y=10)
 buttonRst['font'] = font1
 # New Button
-buttonRst_T=Button(canvasframe,text='LOL',command=startrobot2,bg='lightblue',
+buttonRst_T=Button(canvasframe,text='Robot 2',command=startrobot2,bg='lightblue',
                height=9, width=17)
 buttonRst_T.place(x=1138,y=10)
 buttonRst_T['font'] = font1

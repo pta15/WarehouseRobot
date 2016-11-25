@@ -4,9 +4,9 @@ frame = Canvas(window,width = 1280, height = 720)
 frame.grid()
 font0 = font.Font(size=12, weight='bold') 
 label01 = Label(frame, fg="green", text="Game start Screen")
-label01.config(text='Instructions:\n Press the quest button to start the game\n and make the robot\
+label01.config(text='Instructions:\nPress the quest button to start the game and make the robot\
 collect the colours to bring back to the base.\
-To control the second robot press robot 2 once and click manual.',font=font0)
+\nTo control the second robot press robot 2 once and click manual.',font=font0,justify=LEFT)
 label01.place(x=10,y=50) 
 
 buttonOk=Button(frame,text='Start Game',command=window.destroy,bg='lightblue',
@@ -24,7 +24,7 @@ window = Tk()
 # Create's the wharehouse window
 canvas = Canvas(window, width=1350, height=720, bg='white')
 #Creates controls frame
-canvasframe = Canvas(window,width=1325, height=200, bg='red')
+canvasframe = Canvas(window,width=1720, height=200, bg='red')
 ####################################################################################
 ### Control of the sreen state(fullsreen/windowed) #################################
 # Current screen state
@@ -42,7 +42,7 @@ def Escape(event):
 # Defines window geometry
 canvas.grid(columnspan=200,rowspan=12,padx=285,pady=10)
 # Defines controls frames geometry
-canvasframe.grid(padx=300)
+canvasframe.grid(padx=100)
 # Binds Escape key to Escapes function
 canvas.bind('<Escape>',Escape)
 # Retrieves information from keyboard
@@ -1628,6 +1628,227 @@ buttonRst_T=Button(canvasframe,text='Robot 2',command=startrobot2,bg='lightblue'
                height=9, width=17)
 buttonRst_T.place(x=1138,y=10)
 buttonRst_T['font'] = font1
+
+# Title Options
+buttonopt=Button(canvasframe,bg='lightblue',text='Options',
+               height=2, width=8, state=DISABLED, disabledforeground='black')
+buttonopt.place(x=1500,y=10)
+# First row
+def quest0():
+    global state
+    if state[0]==0:
+        for id in canvas.find_overlapping(1280, 595, 1320, 605):
+            robotcolor = canvas.itemcget(id, 'fill')
+            if robotcolor == 'yellow':
+                canvas.itemconfig(light, fill=color[0])
+            elif robotcolor=='gold':
+                canvas.itemconfig(light, fill=color[0]) 
+def quest1():
+    global state
+    if state[0]==0:
+        for id in canvas.find_overlapping(1280, 595, 1320, 605):
+            robotcolor = canvas.itemcget(id, 'fill')
+            if robotcolor == 'yellow':
+                canvas.itemconfig(fill=color[1])
+            elif robotcolor=='gold':
+                canvas.itemconfig(fill=color[1])
+def quest2():
+    global state
+    if state[0]==0:
+        for id in canvas.find_overlapping(1280, 595, 1320, 605):
+            robotcolor = canvas.itemcget(id, 'fill')
+            if robotcolor == 'yellow':
+                canvas.itemconfig(light, fill=color[2])
+            elif robotcolor=='gold':
+                canvas.itemconfig(light, fill=color[2])
+def quest3():
+    global state
+    if state[0]==0:
+        for id in canvas.find_overlapping(1280, 595, 1320, 605):
+            robotcolor = canvas.itemcget(id, 'fill')
+            if robotcolor == 'yellow':
+                canvas.itemconfig(light, fill=color[3])
+            elif robotcolor=='gold':
+                canvas.itemconfig(light, fill=color[3])
+def quest4():
+    global state
+    if state[0]==0:
+        for id in canvas.find_overlapping(1280, 595, 1320, 605):
+            robotcolor = canvas.itemcget(id, 'fill')
+            if robotcolor == 'yellow':
+                canvas.itemconfig(light, fill=color[4])
+            elif robotcolor=='gold':
+                canvas.itemconfig(light, fill=color[4])
+def quest5():
+    global state
+    if state[0]==0:
+        for id in canvas.find_overlapping(1280, 595, 1320, 605):
+            robotcolor = canvas.itemcget(id, 'fill')
+            if robotcolor == 'yellow':
+                canvas.itemconfig(light, fill=color[5])
+            elif robotcolor=='gold':
+                canvas.itemconfig(light, fill=color[5])
+def quest6():
+    global state
+    if state[0]==0:
+        for id in canvas.find_overlapping(1280, 595, 1320, 605):
+            robotcolor = canvas.itemcget(id, 'fill')
+            if robotcolor == 'yellow':
+                canvas.itemconfig(light, fill=color[6])
+            elif robotcolor=='gold':
+                canvas.itemconfig(light, fill=color[6])
+def quest7():
+    global state
+    if state[0]==0:
+        for id in canvas.find_overlapping(1280, 595, 1320, 605):
+            robotcolor = canvas.itemcget(id, 'fill')
+            if robotcolor == 'yellow':
+                canvas.itemconfig(light, fill=color[7])
+            elif robotcolor=='gold':
+                canvas.itemconfig(light, fill=color[7])
+def quest8():
+    global state
+    if state[0]==0:
+        for id in canvas.find_overlapping(1280, 595, 1320, 605):
+            robotcolor = canvas.itemcget(id, 'fill')
+            if robotcolor == 'yellow':
+                canvas.itemconfig(light, fill=color[8])
+            elif robotcolor=='gold':
+                canvas.itemconfig(light, fill=color[8])
+def quest9():
+    global state
+    if state[0]==0:
+        for id in canvas.find_overlapping(1280, 595, 1320, 605):
+            robotcolor = canvas.itemcget(id, 'fill')
+            if robotcolor == 'yellow':
+                canvas.itemconfig(light, fill=color[9])
+            elif robotcolor=='gold':
+                canvas.itemconfig(light, fill=color[9])
+def quest10():
+    global state
+    if state[0]==0:
+        for id in canvas.find_overlapping(1280, 595, 1320, 605):
+            robotcolor = canvas.itemcget(id, 'fill')
+            if robotcolor == 'yellow':
+                canvas.itemconfig(light, fill=color[10])
+            elif robotcolor=='gold':
+                canvas.itemconfig(light, fill=color[10])
+def quest11():
+    global state
+    if state[0]==0:
+        for id in canvas.find_overlapping(1280, 595, 1320, 605):
+            robotcolor = canvas.itemcget(id, 'fill')
+            if robotcolor == 'yellow':
+                canvas.itemconfig(light, fill=color[11])
+            elif robotcolor=='gold':
+                canvas.itemconfig(light, fill=color[11])
+def quest12():
+    global state
+    if state[0]==0:
+        for id in canvas.find_overlapping(1280, 595, 1320, 605):
+            robotcolor = canvas.itemcget(id, 'fill')
+            if robotcolor == 'yellow':
+                canvas.itemconfig(light, fill=color[12])
+            elif robotcolor=='gold':
+                canvas.itemconfig(light, fill=color[12])
+def quest13():
+    global state
+    if state[0]==0:
+        for id in canvas.find_overlapping(1280, 595, 1320, 605):
+            robotcolor = canvas.itemcget(id, 'fill')
+            if robotcolor == 'yellow':
+                canvas.itemconfig(light, fill=color[13])
+            elif robotcolor=='gold':
+                canvas.itemconfig(light, fill=color[13])
+def quest14():
+    global state
+    if state[0]==0:
+        for id in canvas.find_overlapping(1280, 595, 1320, 605):
+            robotcolor = canvas.itemcget(id, 'fill')
+            if robotcolor == 'yellow':
+                canvas.itemconfig(light, fill=color[14])
+            elif robotcolor=='gold':
+                canvas.itemconfig(light, fill=color[14])
+def quest15():
+    global state
+    if state[0]==0:
+        for id in canvas.find_overlapping(1280, 595, 1320, 605):
+            robotcolor = canvas.itemcget(id, 'fill')
+            if robotcolor == 'yellow':
+                canvas.itemconfig(light, fill=color[15])
+            elif robotcolor=='gold':
+                canvas.itemconfig(light, fill=color[15])
+
+# Colour options
+# Blue option
+buttonblue=Button(canvasframe,bg=color[0],command=quest0,
+               height=3, width=4)
+buttonblue.place(x=1325,y=60)
+# Dark Blue option
+buttondarkblue=Button(canvasframe,bg=color[1],command = quest1,
+               height=3, width=4)
+buttondarkblue.place(x=1375,y=60)
+# Light Blue option
+buttonlightblue=Button(canvasframe,bg=color[2], command = quest2,
+               height=3, width=4)
+buttonlightblue.place(x=1425,y=60)
+# Grey option
+buttongrey=Button(canvasframe,bg=color[3], command = quest3,
+               height=3, width=4)
+buttongrey.place(x=1475,y=60)
+# Violet option
+buttonviolet=Button(canvasframe,bg=color[4], command = quest4,
+               height=3, width=4)
+buttonviolet.place(x=1525,y=60)
+# Dark Orange option
+buttondarkorange=Button(canvasframe,bg=color[5], command = quest5,
+               height=3, width=4)
+buttondarkorange.place(x=1575,y=60)
+# Orange option
+buttonorange=Button(canvasframe,bg=color[6], command = quest6,
+               height=3, width=4)
+buttonorange.place(x=1625,y=60)
+# Salmon option
+buttonsalmon=Button(canvasframe,bg=color[7], command = quest7,
+               height=3, width=4)
+buttonsalmon.place(x=1675,y=60)
+# Second row
+# Pink option
+buttonpink=Button(canvasframe,bg=color[8], command = quest8,
+               height=3, width=4)
+buttonpink.place(x=1325,y=120)
+# Purple option
+buttonpurple=Button(canvasframe,bg=color[9], command = quest9,
+               height=3, width=4)
+buttonpurple.place(x=1375,y=120)
+# Red option
+buttonred=Button(canvasframe,bg=color[10], command = quest10,
+               height=3, width=4)
+buttonred.place(x=1425,y=120)
+# Silver option
+buttonsilver=Button(canvasframe,bg=color[11], command = quest11,
+               height=3, width=4)
+buttonsilver.place(x=1475,y=120)
+# Green option
+buttongreen=Button(canvasframe,bg=color[12], command = quest12,
+               height=3, width=4)
+buttongreen.place(x=1525,y=120)
+# Light Green option
+buttonlightgreen=Button(canvasframe,bg=color[13], command = quest13,
+               height=3, width=4)
+buttonlightgreen.place(x=1575,y=120)
+# Dark Green option
+buttondarkgreen=Button(canvasframe,bg=color[14], command = quest14,
+               height=3, width=4)
+buttondarkgreen.place(x=1625,y=120)
+# Brown option
+buttonbrown=Button(canvasframe,bg=color[15], command = quest15,
+               height=3, width=4)
+buttonbrown.place(x=1675,y=120)
+
+
+
+
 ####################################################################################
 ### Automatic/Manual Toggle Button #################################################
 state=[0] # Toggle button current state list                                              
@@ -1666,3 +1887,4 @@ canvas.create_rectangle(13,513,1215,707,width=5, outline='blue')
 ### Complete the GUI ###############################################################
 # .state('zoomed') forces the window to be the equal to the screen size
 window.state('zoomed')
+

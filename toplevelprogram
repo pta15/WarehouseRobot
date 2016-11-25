@@ -1,0 +1,93 @@
+############################################
+############################################
+##libraries#################################
+from tkinter import *
+import tkinter.messagebox
+import tkinter.filedialog
+import sys
+import os
+
+###########################################
+###########################################
+##window###################################
+root = Tk()
+root.geometry("500x500")
+topLevelMenu=Menu(root)
+text=Text(root)
+text.pack()
+
+###########################################
+###########################################
+##does nothing#############################
+def doNothing():
+   return
+
+###########################################
+###########################################
+##opens a new file#########################
+def newFile():
+   python = sys.executable
+   os.execl(python, python, * sys.argv)
+
+###########################################
+###########################################
+##saves the file###########################
+def file_saveas():
+    f = tkinter.filedialog.asksaveasfile(mode='w', defaultextension=".py")
+    if f is None: # asksaveasfile return `None` if dialog closed with "cancel".
+        return
+    text2save = str(text.get(1.0, END)) 
+    f.write(text2save)
+    f.close() # `()` was missing.
+
+###########################################
+###########################################
+##opens a previous file####################
+def fileOpen():
+   root.withdraw()
+   f = tkinter.filedialog.askopenfilename(filetypes =(("Text File", "*.txt"),("All Files","*.*")),
+                           title = "choose to open a")
+   print(f)
+   if f is None:
+        return
+   try:
+        with open(f,'r') as UseFile:
+            print(UseFile.read())
+   except:
+        print("No file exists")
+
+###########################################
+###########################################
+##about messagebox#########################
+def aboutMessage():
+   aboutmsg = tkinter.messagebox.showinfo("About","This robot simulation was made by group B1")
+   print(aboutmsg)
+   
+###########################################
+###########################################
+##exits the file###########################
+def exitfile():
+   answer = tkinter.messagebox.askquestion("exit","are you sure you want to exit the program")
+   if answer == 'yes':
+      root.destroy()
+   elif answer == 'no':
+      return
+###########################################
+###########################################
+##file menu################################
+fileMenu=Menu(topLevelMenu,tearoff=0)
+fileMenu.add_command(label="New", command=newFile)
+fileMenu.add_command(label="Open", command=fileOpen)
+fileMenu.add_command(label="Save as", command=file_saveas)
+fileMenu.add_command(label="Close", command=doNothing)
+fileMenu.add_separator()
+fileMenu.add_command(label="Exit", command=exitfile)
+topLevelMenu.add_cascade(label="File", menu=fileMenu)
+
+helpMenu=Menu(topLevelMenu,tearoff=0)
+helpMenu.add_command(label="About", command=aboutMessage)
+helpMenu.add_command(label="Close", command=doNothing)
+topLevelMenu.add_cascade(label="Help",menu=helpMenu)
+
+root.config(menu=topLevelMenu)
+root.mainloop()  

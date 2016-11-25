@@ -1,19 +1,19 @@
 from tkinter import *
-window=Tk()
-frame = Canvas(window,width = 1280 , height = 720)
+window=Tk() # creates the window
+frame = Canvas(window,width = 1280, height = 720)
 frame.grid()
+font0 = font.Font(size=12, weight='bold') 
+label01 = Label(frame, fg="green", text="Game start Screen")
+label01.config(text='Instructions:\n Press the quest button to start the game\n and make the robot\
+collect the colours to bring back to the base.\
+To control the second robot press robot 2 once and click manual.',font=font0)
+label01.place(x=10,y=50) 
 
-font0 = font.Font(size=25, weight='bold') # Creates font0
-label0 = Label(frame, fg="green") # Creates label0
-# label0 configuration
-label0.config(text='Instructions:\n In this game you have two rob ',font=font0)
-label0.place(x=10,y=50) # label0 placement on window
-
-buttonOk=Button(frame,text='Start',command=window.destroy,bg='lightblue',
-               height=9, width=17)
+buttonOk=Button(frame,text='Start Game',command=window.destroy,bg='lightblue',
+               height=9, width=17) #text,colour and stated to close window once pressed
 buttonOk.place(x=640,y=360)
 
-window.mainloop()
+window.mainloop() # closes the window/loop
 
 # Import's tkinter library to create GUI 
 from tkinter import *
@@ -30,7 +30,7 @@ canvasframe = Canvas(window,width=1325, height=200, bg='red')
 # Current screen state
 now=True
 # Launches initial screen state
-window.overrideredirect(now)
+window.overrideredirect(now) #----starts in fullscreen
 # Screen state toggle function
 def Escape(event):
     global now # Imports 'now' value
@@ -131,12 +131,28 @@ def random():
     random.choice(color) # Returns a random color from color list
     return random.choice(color)                                                         
 ####################################################################################
+robot2State = 0
 def startrobot2():
-    for i in range(20):
-        for x in range(50):
-            x1,y1,x2,y2=canvas.coords(robot2)
-            canvas.coords(robot2,x1-vx,y1,x2-vx,y2)
-            canvas.update()           
+    global state
+    global robot2State
+    for id in canvas.find_overlapping(1235, 595, 1335, 605): # detects if its in position
+        robotcolor = canvas.itemcget(id, 'fill')
+    if robotcolor == 'gold':
+        if state[0]==0:
+            if robot2State==0:
+                for i in range(25):
+                    for x in range(50): # determmines speed
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1-vx,y1,x2-vx,y2)
+                        canvas.update()# updates canvas ------
+                robot2State=1
+            elif robot2State==1:
+                for i in range(25):
+                    for x in range(50): # when its inline
+                        x1,y1,x2,y2=canvas.coords(robot2)
+                        canvas.coords(robot2,x1+vx,y1,x2+vx,y2)
+                        canvas.update()
+                robot2State=0
 
 ####################################################################################
 ####################################################################################
@@ -1617,24 +1633,28 @@ buttonRst_T['font'] = font1
 state=[0] # Toggle button current state list                                              
                                                                                    
 def toggle(): # Funtion that defines toggle button                                 
-                                       #
+    global robot2State                                  #
     if togbtn.config('text')[-1] == 'Manual':
-        for id in canvas.find_overlapping(1280, 595, 1290, 605):                   
+        for id in canvas.find_overlapping(1280, 595, 1290, 605):   #---detects robot1                  
             robotcolor = canvas.itemcget(id, 'fill')#
             if robotcolor == 'yellow':                                                 
-                togbtn.config(text='Automatic')                                        
+                togbtn.config(text='Automatic') # ---when you press changes to auto                                      
                 state[0]=1                                                               
     else:                                                                       
         togbtn.config(text='Manual')                                                                
-        state[0]=0                               
-    startrobot2()                                                                               
-    while state[0]==1:
-        questcall()                                                             
-        beginquest()
-        questcall()
-        beginquest2()
-        returN()
-        returN2()                                                                   
+        state[0]=0                                                                                                              
+    while state[0]==1: # as long as its in this state continue doing code below
+        if robot2State==1:
+            questcall()                                                             
+            beginquest() 
+            questcall()
+            beginquest2()
+            returN()
+            returN2()
+        elif robot2State==0:
+            questcall()
+            beginquest()
+            returN()
                                                                                                                                 
 togbtn = Button(canvasframe,text="Manual", command=toggle, bg='lightblue',              
                height=9, width=17)                                                                
@@ -1645,4 +1665,4 @@ togbtn['font'] = font1
 canvas.create_rectangle(13,513,1215,707,width=5, outline='blue')
 ### Complete the GUI ###############################################################
 # .state('zoomed') forces the window to be the equal to the screen size
-window.state('zoomed') 
+window.state('zoomed')
